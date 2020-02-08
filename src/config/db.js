@@ -8,10 +8,10 @@ function handleDBError(error) {
   console.error(`Connection failed`, error);
 }
 
-function initDB() {
-  return mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+function initDB(mongoURI = process.env.MONGO_URI) {
+  return mongoose.connect(mongoURI, { useNewUrlParser: true })
     .then(() => {
-      console.log(`Connected to database: ${process.env.MONGO_URI}`);
+      console.log(`Connected to database: ${mongoURI}`);
       const db = mongoose.connection;
       db.on('error', handleDBError);
     })
