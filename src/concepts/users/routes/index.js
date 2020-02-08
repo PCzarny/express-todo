@@ -17,8 +17,12 @@ router.post('/sign-up', (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
   })
-  // TODO: add authorization
-    .then((user) => res.json(user))
+    .then((user) => {
+      req.login(user, (error) => {
+        if (error) { return res.json(user); }
+        res.json(user);
+      });
+    })
     .catch(next);
 });
 
