@@ -15,10 +15,13 @@
     "test:api": "mocha --recursive ./tests/",
     "test:lint": "eslint ./src --ext .js,.ts",
     "start": "node ./dist/index.js",
-    "build": "rm -rf ./dist && tsc",
+    "build:babel": "babel src --out-dir dist --copy-files --extensions '.ts,.js'",
+    "type-check": "tsc --noEmit",
+    "build": "rm -rf ./dist && npm run type-check && npm run build:babel",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.4",
     "@hapi/joi": "^16.1.8",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
@@ -34,8 +37,11 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
+    "@babel/preset-typescript": "^7.8.3",
     "@babel/register": "^7.8.3",
     "@types/express": "^4.17.2",
     "@types/express-session": "^1.15.16",
