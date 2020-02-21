@@ -1,3 +1,5 @@
+require("@babel/register")();
+
 const { initDB } = require('./config/db');
 const { startRestServer } = require('./config/restServer');
 
