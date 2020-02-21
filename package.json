@@ -13,13 +13,8 @@
     "test": "npm run test:lint && npm run test:concepts && npm run test:api",
     "test:concepts": "mocha --recursive \"./src/concepts/**/tests/*.test.js\" --require ./tests/init.js --exit",
     "test:api": "mocha --recursive ./tests/",
-    "start": "node ./src/index.js",
-    "test:lint": "eslint src/**",
-    "postinstall": "link-module-alias"
-  },
-  "_moduleAliases": {
-    "~concepts": "./src/concepts",
-    "~root": "./src"
+    "test:lint": "eslint src/ --ext .js",
+    "start": "node ./src/index.js"
   },
   "dependencies": {
     "@hapi/joi": "^16.1.8",
@@ -30,7 +25,6 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
-    "link-module-alias": "^1.2.0",
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1",
     "passport": "^0.4.1",

@@ -1,7 +1,7 @@
 // TODO: move to Factory
 const User = require('../models/user');
 const queries = require('../repositories/queries');
-const { initDB } = require('~root/config/db');
+const { initDB } = require('../../../config/db');
 
 describe('findUsers', () => {
   before(() => initDB('mongodb://localhost/express-todo-test'));

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 // Register models
-require('~concepts/users/models/user');
-require('~concepts/tasks/models/task');
+require('../concepts/users/models/user');
+require('../concepts/tasks/models/task');
 
 function handleDBError(error) {
   console.error(`Connection failed`, error);

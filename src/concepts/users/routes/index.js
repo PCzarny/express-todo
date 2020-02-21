@@ -20,7 +20,7 @@ router.post('/sign-up', (req, res, next) => {
     .then((user) => {
       req.login(user, (error) => {
         if (error) { return res.json(user); }
-        res.json(user);
+        return res.json(user);
       });
     })
     .catch(next);

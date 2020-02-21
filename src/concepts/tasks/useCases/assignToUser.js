@@ -1,4 +1,4 @@
-const NotFoundError = require('~concepts/errors/NotFound');
+const NotFoundError = require('../../errors/NotFound');
 
 const taskCommands = require('../repositories/commands');
 const taskQueries = require('../repositories/queries');

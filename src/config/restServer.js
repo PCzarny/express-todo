@@ -11,10 +11,10 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const userQueries = require('~concepts/users/repositories/queries');
-const isValidPassword = require('~concepts/users/useCases/isValidPassword');
-const userRouter = require('~concepts/users/routes');
-const taskRouter = require('~concepts/tasks/routes');
+const userQueries = require('../concepts/users/repositories/queries');
+const isValidPassword = require('../concepts/users/useCases/isValidPassword');
+const userRouter = require('../concepts/users/routes');
+const taskRouter = require('../concepts/tasks/routes');
 
 passport.use(new LocalStrategy({
   usernameField: 'email',
@@ -81,11 +81,10 @@ function startRestServer() {
 
   // Auth
   app.post('/login',
-   // passport.authenticate() middleware invokes req.login() automatically
+    // passport.authenticate() middleware invokes req.login() automatically
     passport.authenticate('local', {
       successRedirect: '/',
       failureRedirect: '/login',
-      failureFlash: true,
       failureFlash: 'Invalid username or password.',
       successFlash: 'Welcome!',
     }));
@@ -103,6 +102,7 @@ function startRestServer() {
     res.status(404).send("Sorry can't find that!");
   });
 
+  // eslint-disable-next-line no-unused-vars
   app.use((error, req, res, next) => {
     res.status(400).json({ success: false, error });
   });
